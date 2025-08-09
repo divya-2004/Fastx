@@ -25,6 +25,7 @@ public class Schedule {
 	private LocalDateTime arrivalTime;
 	
 	private int availableSeats;
+	
 	@OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL)
     private List<Seat> seats;
 	

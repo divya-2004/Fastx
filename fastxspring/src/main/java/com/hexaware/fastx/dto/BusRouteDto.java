@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 public class BusRouteDto {
 	
 	@NotNull(message="Route Id is required")
-	private int routeId;
+	private Integer routeId;
 	
 	@NotNull(message="Operator Id is required")
-	private int operatorId;
+	private Integer operatorId;
 	
 	@NotBlank(message="Bus name cannot be empty")
 	private String busName;
@@ -34,7 +34,7 @@ public class BusRouteDto {
 	private String destination;
 	
 	@Min(value=1)
-	private int totalSeats;
+	private Integer totalSeats;
 	
 	private double fare;
 	private String amenities;

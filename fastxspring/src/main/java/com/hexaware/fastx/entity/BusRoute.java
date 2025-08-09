@@ -19,7 +19,7 @@ public class BusRoute {
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="operator_id")
-	private BusOperator operator;
+	private BusOperator operatorId;
 	
 	private String busName;
 	private String busNumber;

@@ -4,36 +4,67 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hexaware.fastx.dto.BusOperatorDto;
 import com.hexaware.fastx.entity.BusOperator;
 import com.hexaware.fastx.repository.BusOperatorRepository;
 
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
+@Transactional
 @Service
 public class BusOperatorServiceImp implements IBusOperatorService{
 	@Autowired
-	BusOperatorRepository repo;
+	BusOperatorRepository operatorRepo;
 	
-	@Override
-	public BusOperator addBusOperator(BusOperator operator) {
-		return repo.save(operator);
+	public BusOperator mapDtoToEntity(BusOperatorDto dto) {
+		BusOperator operator=new BusOperator();
+		operator.setOperatorId(dto.getOperatorId());
+		operator.setName(dto.getName());
+		operator.setEmail(dto.getEmail());
+		operator.setPassword(dto.getPassword());
+		operator.setContactNumber(dto.getContactNumber());
+		operator.setAddress(dto.getAddress());
+	
+		
+		return operatorRepo.save(operator);
 	}
+	
+
+	@Override
+	public BusOperator addBusOperator(BusOperatorDto dto) {
+		log.info("Add new Bus Operator");
+		BusOperator operator=mapDtoToEntity(dto);
+		return operatorRepo.save(operator);
+	}
+
+	@Override
+	public BusOperator updateBusOperator(BusOperatorDto dto) {
+		log.info("Update Bus Operator by Id");
+		BusOperator exist=operatorRepo.findById(dto.getOperatorId()).orElse(null);
+		if(exist!=null) {
+			exist=mapDtoToEntity(dto);
+			return operatorRepo.save(exist);
+		}return null;
+	
+	}
+	
 	@Override 
 	public BusOperator getByOperatorId(int operatorId) {
-		return repo.findById(operatorId).orElse(null);
+		log.debug("Get Bus Operator by Id: {}",operatorId);
+		return operatorRepo.findById(operatorId).orElse(null);
 	}
 	@Override
 	public List<BusOperator> getAllBusOperator(){
-		return repo.findAll();
+		log.debug("Get all Bus Operators");
+		return operatorRepo.findAll();
 	}
 	
-	@Override
-	public BusOperator updateBusOperator(BusOperator operator) {
-		return repo.save(operator);
-	}
 	@Override
 	public String deleteByOperatorId(int operatorId) {
-		repo.deleteById(operatorId);
+		log.info("Delete Bus Operator By Id:{}", operatorId);
+		operatorRepo.deleteById(operatorId);
 		return "Deleted Successfully";
 	}
-	
-	
+
 }

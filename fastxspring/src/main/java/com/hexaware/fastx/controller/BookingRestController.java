@@ -16,7 +16,9 @@ import com.hexaware.fastx.entity.Booking;
 import com.hexaware.fastx.service.IBookingService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/booking")
 public class BookingRestController {
@@ -25,26 +27,31 @@ public class BookingRestController {
 	
 	@PostMapping("/create")
 	public Booking createBooking(@RequestBody @Valid BookingDto dto) {
+		log.info("REST API called: Create new Booking");
 		return service.createBooking(dto);
 	}
 	
 	@GetMapping("/getbyid/{bookingId}")
 	public Booking getBookingById(@PathVariable int bookingId){
+		log.info("REST API called: Get Booking by Id:{}", bookingId);
 		return service.getBookingByBookingId(bookingId);
 	}
 	
 	@GetMapping("/getbyuser/{userId}")
 	public List<Booking> getBookingByUser(@PathVariable int userId){
+		log.info("REST API called: Get Booking by user Id:{}", userId);
 		return service.getBookingByUserId(userId);
 	}
 	
 	@DeleteMapping("/cancel/{bookingId}")
 	public String cancelBooking(@PathVariable int bookingId) {
+		log.info("REST API called: Booking cancelled by Id:{}", bookingId);
 		return service.cancelBooking(bookingId);
 	}
 	
 	@GetMapping("/getall")
 	public List<Booking> getAllBooking(){
+		log.debug("REST API called: Get all Bookings");
 		return service.getAllBooking();
 	}
 }
