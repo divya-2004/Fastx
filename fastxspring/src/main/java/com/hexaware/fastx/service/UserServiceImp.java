@@ -26,7 +26,7 @@ public class UserServiceImp implements IUserService {
 		user.setPassword(dto.getPassword());
 		user.setGender(dto.getGender());
 		user.setContactNumber(dto.getContactNumber());
-		user.setAddress(dto.getAddress());
+		
 		return user;
 	}
 	

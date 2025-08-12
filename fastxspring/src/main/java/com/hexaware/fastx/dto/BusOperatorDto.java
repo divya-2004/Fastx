@@ -28,6 +28,4 @@ public class BusOperatorDto {
 	@Pattern(regexp="^[0-9]{10}$")
 	private String contactNumber;
 	
-	@NotBlank(message="Address cannot be empty")
-	private String address;
 }

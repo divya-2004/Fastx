@@ -16,7 +16,7 @@ public class User {
 	private String password;
 	private Gender gender;
 	private String contactNumber;
-	private String address;
+	
 	public enum Gender{
 		Male, Female, Other
 	}	

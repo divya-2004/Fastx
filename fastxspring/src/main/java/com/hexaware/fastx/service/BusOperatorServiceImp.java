@@ -24,7 +24,6 @@ public class BusOperatorServiceImp implements IBusOperatorService{
 		operator.setEmail(dto.getEmail());
 		operator.setPassword(dto.getPassword());
 		operator.setContactNumber(dto.getContactNumber());
-		operator.setAddress(dto.getAddress());
 	
 		
 		return operatorRepo.save(operator);

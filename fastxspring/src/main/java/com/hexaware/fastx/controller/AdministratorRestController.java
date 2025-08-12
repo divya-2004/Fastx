@@ -55,6 +55,6 @@ public class AdministratorRestController {
 		log.info("REST API called: Delete admin by ID:{}");
 		return service.deleteByAdminId(adminId);
 	}
-	
+	//http://localhost:8085/api/swagger-ui/index.html
 
 }

@@ -5,7 +5,6 @@ import com.hexaware.fastx.entity.User.Gender;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -31,8 +30,5 @@ public class UserDto {
 	@NotBlank(message="Cannot be empty")
 	@Pattern(regexp="\\d{10}", message="Enter a valid number")
 	private String contactNumber;
-	
-	@NotBlank(message="Cannot be empty")
-	@Size(min=10, max=50)
-	private String address;
+
 }
