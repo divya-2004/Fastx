@@ -20,7 +20,7 @@ public class BookingDto {
 	private Integer scheduleId;
 	
 	@NotBlank(message="Seat No cannot be null")
-	@Pattern(regexp = "^[A-Z][0-9]{2,1}$")
+	@Pattern(regexp = "^[A-Z][0-9]{1,2}$")
 	private String seatNumber;
 	
 	@NotBlank(message="Name is required")

@@ -2,6 +2,7 @@ package com.hexaware.fastx.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.fastx.dto.UserDto;
@@ -19,22 +20,38 @@ public class UserServiceImp implements IUserService {
 	UserRepository userRepo;
 	
 	private User mapDtoToEntity(UserDto dto, User user) {
-		if(user==null) {user=new User();}
-		user.setUserId(dto.getUserId());
-		user.setName(dto.getName());
-		user.setEmail(dto.getEmail());
-		user.setPassword(dto.getPassword());
-		user.setGender(dto.getGender());
-		user.setContactNumber(dto.getContactNumber());
-		
-		return user;
+	    if(user == null) { 
+	        user = new User(); 
+	    }
+	    user.setUserId(dto.getUserId());
+	    user.setName(dto.getName());
+	    user.setEmail(dto.getEmail());
+	    user.setPassword(dto.getPassword());
+	    
+	    if(dto.getGender() != null) {
+	        try {
+	            user.setGender(User.Gender.valueOf(dto.getGender()));
+	        } catch (IllegalArgumentException e) {
+	            throw new RuntimeException("Invalid gender value: " + dto.getGender());
+	        }
+	    }
+	    
+	    user.setContactNumber(dto.getContactNumber());
+	    return user;
 	}
-	
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	@Override
 	public User registerUser(UserDto dto) {
-		log.info("Register new user with email:{}", dto.getEmail());
-		return userRepo.save(mapDtoToEntity(dto,null));
+	    log.info("Register new user with email:{}", dto.getEmail());
+
+	    dto.setPassword(passwordEncoder.encode(dto.getPassword()));
+
+	    return userRepo.save(mapDtoToEntity(dto, null));
 	}
+
 	@Override
 	public User loginUser(String email, String password) {
 		log.info("Login with email:{}", email);

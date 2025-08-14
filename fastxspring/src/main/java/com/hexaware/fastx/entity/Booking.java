@@ -1,47 +1,53 @@
 package com.hexaware.fastx.entity;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@ToString(exclude = {"user", "schedule", "seat"})
 public class Booking {
-	@Id
-	private int bookingId;
-	
+    @Id
+    private int bookingId;
 
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="user_id")
-	private User user;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="schedule_id")
-	private Schedule schedule;
-	
-	private String seatNumber;
-	private String passengerName;
-	private Gender passengerGender;
-	private double totalAmount;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="seat_id")
-	private Seat seat;
-	
-	private BookingStatus bookingStatus=BookingStatus.Pending;
-	
-	public enum Gender{
-		Male, Female, Other
-	}
-	public enum BookingStatus{
-		Confirmed, Cancelled, Pending
-	}
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    @JsonIgnore
+    private User user;
 
-	
+    @ManyToOne
+    @JoinColumn(name="schedule_id")
+    @JsonIgnore
+    private Schedule schedule;
+
+    private String seatNumber;
+    private String passengerName;
+    private Gender passengerGender;
+    private double totalAmount;
+
+    @OneToOne
+    @JoinColumn(name="seat_id")
+    @JsonIgnore
+    private Seat seat;
+
+    private BookingStatus bookingStatus = BookingStatus.Pending;
+
+    public enum Gender {
+        Male, Female, Other
+    }
+
+    public enum BookingStatus {
+        Confirmed, Cancelled, Pending
+    }
 }

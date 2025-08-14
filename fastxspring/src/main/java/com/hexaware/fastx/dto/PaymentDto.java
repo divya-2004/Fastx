@@ -26,6 +26,6 @@ public class PaymentDto {
 	private String refundTransactionId;
 	private LocalDateTime refundDate;
 	
-	private int refundedByAdminId;
+	private int adminId;
 	
 }

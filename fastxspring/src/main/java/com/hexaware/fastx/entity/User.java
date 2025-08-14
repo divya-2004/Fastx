@@ -16,8 +16,16 @@ public class User {
 	private String password;
 	private Gender gender;
 	private String contactNumber;
-	
+	private String role = "ROLE_USER";
 	public enum Gender{
-		Male, Female, Other
+		Male, Female, Other;
+		public static Gender fromString(String gender) {
+            for (Gender g : Gender.values()) {
+                if (g.name().equalsIgnoreCase(gender)) {
+                    return g;
+                }
+            }
+            throw new IllegalArgumentException("Invalid gender: " + gender);
+        }
 	}	
 }

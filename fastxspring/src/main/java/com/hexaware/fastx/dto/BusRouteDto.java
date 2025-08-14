@@ -24,7 +24,7 @@ public class BusRouteDto {
 	@NotBlank(message="Bus name cannot be empty")
 	private String busNumber;
 	
-	@NotBlank(message="Bus Type cannot be empty")
+	@NotNull(message="Bus Type cannot be empty")
 	private BusType busType;
 	
 	@NotBlank(message="Orgin cannot be empty")

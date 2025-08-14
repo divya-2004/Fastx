@@ -1,40 +1,47 @@
 package com.hexaware.fastx.entity;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@ToString(exclude = {"booking", "admin"})
 public class Payment {
-	@Id
-	private int paymentId;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "booking_id")  
-	private Booking booking;
+    @Id
+    private int paymentId;
 
-	private double amount;
-	private PaymentStatus paymentStatus=PaymentStatus.Pending;
-	private LocalDateTime paymentDate=LocalDateTime.now();
-	private String transactionId;
-	private String refundTransactionId;
-	private LocalDateTime refundDate;
-	
-	
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="admin_id")
-	private Administrator refundedByAdmin;
-	
-	public enum PaymentStatus{
-		Completed, Pending, Failed, Refunded
-	}
+    @ManyToOne
+    @JoinColumn(name = "booking_id")
+    @JsonIgnore 
+    private Booking booking;
+
+    private double amount;
+    private PaymentStatus paymentStatus = PaymentStatus.Pending;
+    private LocalDateTime paymentDate = LocalDateTime.now();
+    private String transactionId;
+    private String refundTransactionId;
+    private LocalDateTime refundDate;
+
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    @JsonBackReference(value = "admin-payments")
+    @JsonIgnoreProperties({"payments"})
+    private Administrator admin;
+
+    public enum PaymentStatus {
+        Completed, Pending, Failed, Refunded
+    }
 }

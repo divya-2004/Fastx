@@ -34,8 +34,9 @@ public class PaymentServiceImp implements IPaymentService{
 		Payment payment=new Payment();
 		payment.setPaymentId(dto.getPaymentId());
 		
-		Administrator admin=adminRepo.findById(dto.getRefundedByAdminId()).orElse(null);
-		payment.setRefundedByAdmin(admin);
+		Administrator admin = adminRepo.findById(dto.getAdminId()).orElse(null);
+		payment.setAdmin(admin);
+
 		
 		Booking booking=bookingRepo.findById(dto.getBookingId()).orElse(null);
 		payment.setBooking(booking);

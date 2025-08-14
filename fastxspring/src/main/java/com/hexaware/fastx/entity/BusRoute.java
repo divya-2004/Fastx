@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class BusRoute {
+	
 	@Id
 	private int routeId;
 	
@@ -23,7 +24,7 @@ public class BusRoute {
 	
 	private String busName;
 	private String busNumber;
-	private BusType busType;
+	public BusType busType;
 	private String orgin;
 	private String destination;
 	private int totalSeats;

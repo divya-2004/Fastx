@@ -1,7 +1,5 @@
 package com.hexaware.fastx.dto;
 
-import com.hexaware.fastx.entity.User.Gender;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -23,10 +21,10 @@ public class UserDto {
 	@NotBlank(message="Cannot be empty")
 	private String password;
 
-	@NotBlank(message="Cannot be empty")
+	@NotNull(message="Cannot be empty")
 	@Pattern(regexp="Male|Female|Other", message="Enter a valid option")
-	private Gender gender;
-	
+	private String gender;
+	private String role;
 	@NotBlank(message="Cannot be empty")
 	@Pattern(regexp="\\d{10}", message="Enter a valid number")
 	private String contactNumber;
