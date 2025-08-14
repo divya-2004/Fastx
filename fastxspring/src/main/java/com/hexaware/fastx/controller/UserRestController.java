@@ -19,6 +19,17 @@ import com.hexaware.fastx.service.IUserService;
 
 import jakarta.validation.Valid;
 
+/**
+ * User Controller
+ * @author Divya
+ * Modified: 15/08/2025
+ * register user
+ * get user by id
+ * get all users
+ * update user
+ * delete user by id
+ */
+
 @RestController
 @RequestMapping("/api/user")
 public class UserRestController {

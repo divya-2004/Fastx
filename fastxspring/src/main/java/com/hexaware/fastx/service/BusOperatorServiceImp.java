@@ -10,6 +10,16 @@ import com.hexaware.fastx.repository.BusOperatorRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Bus Operator Service
+ * @author Divya
+ * Modified: 09/08/2025
+ * 
+ * 
+ *
+ */
+
 @Slf4j
 @Transactional
 @Service

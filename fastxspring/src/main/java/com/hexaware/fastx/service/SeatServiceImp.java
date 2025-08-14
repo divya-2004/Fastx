@@ -7,7 +7,21 @@ import org.springframework.stereotype.Service;
 import com.hexaware.fastx.dto.SeatDto;
 import com.hexaware.fastx.repository.SeatRepository;
 
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Seat Service
+ * @author Divya
+ * Modified: 11/08/2025
+ * 
+ * 
+ *
+ */
+
+@Slf4j
 @Service
+@Transactional
 public class SeatServiceImp implements ISeatService {
 
     @Autowired

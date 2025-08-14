@@ -20,6 +20,19 @@ import com.hexaware.fastx.service.IScheduleService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Schedule Controller
+ * @author Divya
+ * Modified: 10/08/2025
+ * add schedule
+ * update schedule
+ * delete schedule by id
+ * get schedule by id
+ * get schedule by route id
+ * get schedule by date
+ */
+
+
 @Slf4j
 @RestController
 @RequestMapping("/api/schedule")

@@ -18,6 +18,17 @@ import com.hexaware.fastx.service.IBusOperatorService;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+/**
+ * Bus Operator Controller
+ * @author Divya
+ * Modified: 15/08/2025
+ * add bus operator
+ * update bus operator
+ * get bus operator by id
+ * get all bus operators
+ * delete bus operator by id
+ */
+
 
 @Slf4j
 @RestController

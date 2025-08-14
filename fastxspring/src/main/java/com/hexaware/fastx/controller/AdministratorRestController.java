@@ -18,6 +18,18 @@ import com.hexaware.fastx.service.IAdministratorService;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Admin Controller 
+ * @author Divya
+ * Modified: 14/08/2025
+ * add admin
+ * update admin
+ * getall admin
+ * getbyid admin
+ * delete admin
+ */
+
 @Slf4j
 @RestController
 @RequestMapping("/api/admin")

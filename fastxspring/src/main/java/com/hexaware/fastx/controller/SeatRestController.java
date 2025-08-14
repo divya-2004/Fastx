@@ -12,6 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hexaware.fastx.dto.SeatDto;
 import com.hexaware.fastx.service.ISeatService;
 
+/**
+ * Seat Controller
+ * @author Divya
+ * Modified: 13/08/2025
+ * get seats by schedule id
+ * get available seats by schedule id
+ */
+
+
 @RestController
 @RequestMapping("/api/seats")
 public class SeatRestController {

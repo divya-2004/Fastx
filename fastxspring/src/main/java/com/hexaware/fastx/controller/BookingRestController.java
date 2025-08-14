@@ -18,6 +18,18 @@ import com.hexaware.fastx.service.IBookingService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Booking Controller
+ * @author Divya
+ * Modified: 10/08/2025
+ * create booking
+ * get booking by id
+ * get booking by user id
+ * cancel booking
+ * get all bookings
+ */
+
+
 @Slf4j
 @RestController
 @RequestMapping("/api/booking")

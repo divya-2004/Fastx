@@ -20,6 +20,19 @@ import com.hexaware.fastx.service.IBusRouteService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Bus Route Controller
+ * @author Divya
+ * Modified: 10/08/2025
+ * add bus route
+ * update bus route
+ * get all bus routes
+ * search bus route
+ * delete bus route by id
+ */
+
+
+
 @Slf4j
 @RestController
 @RequestMapping("/api/busroute")

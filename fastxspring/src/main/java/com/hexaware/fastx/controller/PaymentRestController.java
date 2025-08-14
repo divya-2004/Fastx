@@ -12,6 +12,18 @@ import com.hexaware.fastx.service.IPaymentService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Payment Controller
+ * @author Divya
+ * Modified: 10/08/2025
+ * make payment
+ * get payment by id
+ * get payment by booking id
+ * get all payments
+ * refund payment
+ */
+
+
 @Slf4j
 @RestController
 @RequestMapping("/api/payment")
