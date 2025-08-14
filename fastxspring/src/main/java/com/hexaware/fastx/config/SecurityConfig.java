@@ -36,13 +36,13 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                // Public routes
+               
                 .requestMatchers(
                     "/auth/login",
                     "/api/user/register",
-                    "/api/admin/**",
+                    "/api/admin/register",
                     "/api/busoperator/**",
-                    "/api/busroute/**",
+                    "/api/busroute/register",
                     "/api/payment/**",
                     
                     "/api/booking/**",    
@@ -52,6 +52,9 @@ public class SecurityConfig {
                 ).permitAll()
               
                 .requestMatchers("/api/user/**").authenticated()
+                .requestMatchers("/api/admin/**").authenticated()
+                .requestMatchers("/api/busoperator/**").authenticated()
+
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
@@ -62,4 +65,3 @@ public class SecurityConfig {
 
 
 }
-

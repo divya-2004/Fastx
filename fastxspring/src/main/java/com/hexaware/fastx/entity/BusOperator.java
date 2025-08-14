@@ -17,6 +17,6 @@ public class BusOperator {
 	private String email;
 	private String password;
 	private String contactNumber;
-
+	private String role = "Operator";
 
 }

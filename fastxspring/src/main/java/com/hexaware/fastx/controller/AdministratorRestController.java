@@ -18,7 +18,6 @@ import com.hexaware.fastx.service.IAdministratorService;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-
 @Slf4j
 @RestController
 @RequestMapping("/api/admin")

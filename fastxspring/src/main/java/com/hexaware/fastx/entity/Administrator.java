@@ -21,7 +21,7 @@ public class Administrator {
     private String name;
     private String email;
     private String password;
-
+    private String role = "Admin";
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Payment> payments;

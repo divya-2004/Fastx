@@ -36,11 +36,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         if (path.equals("/auth/login") 
             || path.equals("/api/user/register")
-            || path.startsWith("/api/admin/")
+            || path.startsWith("/api/admin/register")
             || path.startsWith("/api/booking/")
             || path.startsWith("/api/busroute/")
             || path.startsWith("/api/payment/")
-            || path.startsWith("/api/busoperator")
+            || path.startsWith("/api/busoperator/register")
             || path.startsWith("/api/seats/")
             || path.startsWith("/api/schedule/")
             || path.startsWith("/swagger-ui/")
@@ -76,4 +76,3 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     }
 
 }
-

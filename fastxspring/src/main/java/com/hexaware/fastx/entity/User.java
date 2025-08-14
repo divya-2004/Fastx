@@ -16,7 +16,7 @@ public class User {
 	private String password;
 	private Gender gender;
 	private String contactNumber;
-	private String role = "ROLE_USER";
+	private String role = "User";
 	public enum Gender{
 		Male, Female, Other;
 		public static Gender fromString(String gender) {
