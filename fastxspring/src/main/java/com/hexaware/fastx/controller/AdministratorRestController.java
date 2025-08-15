@@ -3,6 +3,7 @@ package com.hexaware.fastx.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,30 +39,35 @@ public class AdministratorRestController {
 	IAdministratorService service;
 	
 	@PostMapping("/add")
+	@PreAuthorize("hasAnyRole('Admin')")
 	public Administrator addAdmin(@RequestBody @Valid AdministratorDto dto) {
 		log.info("REST API called: Add new admin");
 		return service.addAdmin(dto);
 	}
 	
 	@PutMapping("/update")
+	@PreAuthorize("hasAnyRole('Admin')")
 	public Administrator updateAdmin(@RequestBody @Valid AdministratorDto dto) {
 		log.info("REST API called: Update admin by ID:{}");
 		return service.updateAdmin(dto);
 	}
 	
 	@GetMapping("/getbyid/{adminId}")
+	@PreAuthorize("hasAnyRole('Admin')")
 	public Administrator getAdminById(@PathVariable int adminId) {
 		log.info("REST API called: Get admin by ID:{}");
 		return service.getByAdminId(adminId);
 	}
 	
 	@GetMapping("/getall")
+	@PreAuthorize("hasAnyRole('Admin')")
 	public List<Administrator> getAllAdmin(){
 		log.info("REST API called: Get all admin");
 		return service.getAllAdmin();
 	}
 	
 	@DeleteMapping("/deletebyid/{adminId}")
+	@PreAuthorize("hasAnyRole('Admin')")
 	public String deleteAdminById (@PathVariable int adminId) {
 		log.info("REST API called: Delete admin by ID:{}");
 		return service.deleteByAdminId(adminId);
